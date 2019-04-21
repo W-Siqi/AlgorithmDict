@@ -1,0 +1,108 @@
+
+
+struct ListNode {
+      int val;
+      ListNode *next;
+      ListNode(int x) : val(x), next(nullptr) {}
+};
+ 
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+
+        ListNode* result=nullptr;
+        
+        int plusNum=0;
+        int digitCounter=0;
+        while(true)
+        {
+            int num1=GetDigit(l1,digitCounter);
+            int num2=GetDigit(l2,digitCounter);
+            if(num1<0&&num2<0)
+            {
+                break;
+            }
+            if(num1<0) num1=0;
+            if(num2<0) num2=0;
+            
+            int sumOfDigit=num1+num2+plusNum;
+            if(sumOfDigit>=10)
+            {
+                plusNum=1;
+            }
+            else
+            {
+                plusNum=0;
+            }
+                
+            
+            int finalDigitNumber=sumOfDigit%10;
+            if(result==nullptr)
+            {
+                result=new ListNode(finalDigitNumber);
+            }
+            else
+            {
+                AppendToTail(result,finalDigitNumber);   
+            }
+            
+            digitCounter++;
+        }
+        
+        if(result==nullptr)
+        {
+            result=new ListNode(0);
+        }
+        
+        if(plusNum==1)
+        {
+            AppendToTail(result,1);
+        }
+            
+        return result;
+    }
+    
+    int GetDigit(ListNode* numberList, int digitCount)
+    {
+        ListNode* current=numberList;
+        
+        for(int i=0;i<digitCount;i++)
+        {
+            if(current==nullptr)
+            {
+                break;
+            }
+            else
+            {
+                current=current->next;
+            }
+        }
+        
+        if(current==nullptr)
+        {
+            return -1;
+        }
+        else
+        {
+            return current->val;
+        }          
+    }
+    
+    void AppendToTail(ListNode* list, int val)
+    {
+        ListNode* lastNode=list;        
+        while(true)
+        {
+            if(lastNode->next==nullptr)
+            {
+                break;
+            }
+            else
+            {
+                lastNode=lastNode->next;   
+            }
+        }
+        
+        lastNode->next=new ListNode(val);
+    }
+};
