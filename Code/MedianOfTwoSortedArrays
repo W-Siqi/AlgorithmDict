@@ -1,0 +1,66 @@
+// runtime: 99.00%
+// memory: 100%
+
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int sumSize=nums1.size()+nums2.size();
+        
+        int targetIndex1;
+        int targetIndex2;      
+        if(sumSize%2 == 0)
+        {
+            targetIndex1=sumSize/2-1;
+            targetIndex2=sumSize/2;
+        }
+        else
+        {
+            targetIndex1=targetIndex2=sumSize/2;
+        }
+        
+        int ptr1=0;
+        int ptr2=0;
+        int currentIndex=0;
+        double targetNum1;
+        double targetNum2;
+
+        while(currentIndex<sumSize)
+        {
+            int currentNum;
+            if(ptr1>=nums1.size())
+            {
+                currentNum=nums2[ptr2++];
+            }
+            else if(ptr2>=nums2.size())
+            {
+                currentNum=nums1[ptr1++];
+            }
+            else
+            {
+                int candidateNum1=nums1[ptr1];
+                int candidateNum2=nums2[ptr2];
+                if(candidateNum1>candidateNum2)
+                {
+                    currentNum=nums2[ptr2++];
+                }
+                else
+                {
+                    currentNum=nums1[ptr1++];
+                }            
+            }
+            
+            if(currentIndex==targetIndex1)
+            {
+                targetNum1=currentNum;
+            }
+            if(currentIndex==targetIndex2)
+            {
+                targetNum2=currentNum;
+            }
+            
+            currentIndex++;
+        }
+        
+        return (targetNum1+targetNum2)/2;
+    }
+};
