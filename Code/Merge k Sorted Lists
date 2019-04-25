@@ -1,0 +1,79 @@
+// runtime: 10.38%
+// memory: 99.75%
+// TODO: reuse the memory by removing  nodes from old linklist cost too much time!!
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        ListNode* head=RemoveNodeWithMinVal(lists);  
+        ListNode* tail=nullptr;
+        if(head==nullptr)
+        {
+            return head;
+        }
+        else
+        {
+            tail=head;
+        }
+        
+        while(true)
+        {
+            ListNode* next=RemoveNodeWithMinVal(lists);      
+            if(next==nullptr)
+            {
+                break;
+            }
+            else
+            {
+                tail->next=next;
+                tail=next;
+            }
+        }
+        
+        return head;
+    }
+    
+    ListNode* RemoveNodeWithMinVal(vector<ListNode*>& lists)
+    {
+        int indexOfChoosedHead=-1;
+        int valOfChoosedHead=0;
+        for(int i=0;i<lists.size();i++)
+        {
+            ListNode* headNode=lists[i];
+            if(headNode==nullptr)
+            {
+                continue;
+            }
+            
+            if(indexOfChoosedHead==-1)
+            {
+                indexOfChoosedHead=i;
+                valOfChoosedHead=headNode->val;
+            }
+            else if(headNode->val<valOfChoosedHead)
+            {
+                indexOfChoosedHead=i;
+                valOfChoosedHead=headNode->val;
+            }
+        }
+        
+        if(indexOfChoosedHead==-1)
+        {
+            return nullptr;
+        }
+        else
+        {
+            ListNode* choosedHead=lists[indexOfChoosedHead];
+            ListNode* newHead=choosedHead->next;
+            lists[indexOfChoosedHead]=newHead;
+            return choosedHead;
+        }
+    }
+};
