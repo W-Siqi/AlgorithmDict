@@ -1,0 +1,131 @@
+// leetCode runtime: 99.40%
+// leetCode memory: 100.00%
+// 商榷之处： Flag 的写法
+
+class Solution {
+public:
+    bool isNumber(string s) {        
+        int charPtr=0;
+        // remove prefix space
+        while(true)
+        {   
+            if(charPtr >= s.size())
+            {
+                break;
+            }
+            
+            char c=s[charPtr];
+            if(c==' ')
+            {
+                charPtr++;
+                continue;
+            }
+            else
+            {
+                break;
+            }           
+        }
+        
+        // remove pos or neg sign
+        char nextChar=s[charPtr];
+        if(nextChar=='+'||nextChar=='-')
+        {
+            charPtr++;
+        }
+        
+        if(charPtr>=s.size())
+        {
+            return false;
+        }
+        bool decimalPointRegistered=false;
+        bool exponentRegistered=false; 
+        bool numberRegistered=false;
+        bool postExpNumberRegistered=false;
+        bool postDecPointNumberRegistered=false;
+        bool spaceTailRegistered=false;
+        
+        while(charPtr<s.size())
+        {
+            char c=s[charPtr++];
+            if(spaceTailRegistered)
+            {
+                if(c==' ')
+                {
+                    continue;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            
+            
+            if(c=='e')
+            {
+                if(numberRegistered == true && exponentRegistered == false)
+                {
+                    exponentRegistered=true;
+                    if(charPtr<s.size())
+                    {
+                        char charAfterExp=s[charPtr];
+                        if(charAfterExp=='+'||charAfterExp=='-')
+                        {
+                            charPtr++;   
+                        }
+                    }
+                    continue;
+                }   
+                else
+                {
+                    return false;
+                }
+            }
+            else if(c=='.')
+            {
+                if(exponentRegistered == true)
+                {
+                    return false;
+                }
+                
+                if(decimalPointRegistered == false)
+                {
+                    decimalPointRegistered=true;
+                    continue;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if(c>='0'&&c<='9')
+            {
+                numberRegistered=true;
+                if(exponentRegistered)postExpNumberRegistered=true;
+                if(decimalPointRegistered)postDecPointNumberRegistered=true;
+                continue;
+            }
+            else if(c==' ')
+            {
+                spaceTailRegistered=true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        if(exponentRegistered==true&&postExpNumberRegistered==false)
+        {
+         
+            return false;
+        }
+        else if(decimalPointRegistered==true && numberRegistered==false)
+        {
+            return false;   
+        }
+        else
+        {
+            return true;   
+        }
+    }
+};
