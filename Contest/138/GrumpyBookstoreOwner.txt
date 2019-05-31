@@ -1,0 +1,40 @@
+// runtime: 90.50%
+// memorary 100%
+
+// 教训1： 不要在循环里用 vector.size(),外面用变量缓存好
+class Solution {
+public:
+    int maxSatisfied(vector<int>& customers, vector<int>& grumpy, int X) {
+        int cusSize=customers.size();
+        vector<int> valList(cusSize);
+        int oriSatisfiedVal=0;
+        for(int i=0;i<cusSize;i++){
+            if(grumpy[i]){
+                valList[i]=customers[i];
+            }
+            else{
+                valList[i]=0;
+                oriSatisfiedVal+=customers[i];
+            }
+        }
+        
+        // init current val
+        int currentSaveVal=0;        
+        for(int i=0;i<X;i++){
+            currentSaveVal+=valList[i];
+        }
+    
+        int maxSaveVal=currentSaveVal;      
+        for(int i=1;i+X-1<cusSize;i++)
+        {
+            currentSaveVal-=valList[i-1];
+            currentSaveVal+=valList[i+X-1];
+            if(currentSaveVal>maxSaveVal)
+            {
+                maxSaveVal=currentSaveVal;
+            }
+        }
+        
+        return oriSatisfiedVal+maxSaveVal;
+    }
+};
