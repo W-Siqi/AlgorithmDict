@@ -1,0 +1,82 @@
+// runtime: 5.25%
+class Solution {
+public:
+    vector<int> rearrangeBarcodes(vector<int>& barcodes) {
+        // build map
+        int hashSize=10001;
+        vector<int> hashMap(hashSize,0);
+        for(int i=0;i<barcodes.size();i++){
+            int code=barcodes[i];
+            hashMap[code]++;
+        }
+        
+        // build board
+        vector<int> codeBoard;
+        vector<int> numMusk;
+        for(int i=0;i<hashSize;i++){
+            int num=hashMap[i];
+            if(num>0){
+                codeBoard.push_back(i);
+                numMusk.push_back(num);
+            }
+        }
+        // rank the board
+        int codeBoardCount=codeBoard.size();
+        for(int i=0;i<codeBoardCount;i++){
+            for(int j=i+1;j<codeBoardCount;j++){
+                if(numMusk[i]<numMusk[j]){
+                    int temp=numMusk[i];
+                    numMusk[i]=numMusk[j];
+                    numMusk[j]=temp;
+                    
+                    temp=codeBoard[i];
+                    codeBoard[i]=codeBoard[j];
+                    codeBoard[j]=temp;
+                }
+            }
+        }
+        
+        
+        vector<int> result(barcodes.size(),-1);
+        list<int> refillCodes(0);
+        for(int i=0;i<codeBoardCount;i++){
+            int indexOfCode=i;
+            
+            int code=codeBoard[indexOfCode];
+            int num=numMusk[indexOfCode];
+            
+            numMusk[indexOfCode]=0;
+            int curIndex=0;
+            for(int j=0;j<num;j++)
+            {
+               if(curIndex>=result.size()){
+                    int fixedIndex=curIndex-result.size();
+                    refillCodes.push_back(result[fixedIndex]);
+                    result[fixedIndex]=code;
+                   
+                    curIndex+=2;
+                    continue;
+                }
+                
+                while(result[curIndex]>0){
+                    curIndex++;
+                }
+                result[curIndex]=code;
+                curIndex+=2;
+            }
+        }
+        
+        // refill
+        list<int>::iterator iter;
+        int curIndex=0;
+        for(iter=refillCodes.begin();iter!=refillCodes.end();iter++){
+            while(result[curIndex]>0){
+                curIndex++;
+            }
+            result[curIndex]=*iter;
+        }
+        
+        return result;
+    }
+    
+};
