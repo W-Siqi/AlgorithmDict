@@ -1,0 +1,41 @@
+// runtime 22.89%
+// memoary 100%
+class Solution {
+public:
+    vector<int> prevPermOpt1(vector<int>& A) {
+        // <number, index>
+        map<int,int> indexMap;
+        int swapA=-1;
+        int swapB=-1;
+        bool succeed=false;
+        for(int i=A.size()-1;i>=0;i--)
+        {
+            int num=A[i];
+            indexMap[num]=i;
+                
+            for(int j=num;j--;j>=0){
+                if(indexMap.count(j)>0){
+                    swapA=indexMap[j];
+                    swapB=i;
+                    succeed=true;
+                    break;
+                }
+            }
+            
+            if(succeed)
+            {
+                break;
+            }
+        }
+        
+        if(succeed)
+        {
+            int valA=A[swapA];
+            int valB=A[swapB];
+            A[swapA]=valB;
+            A[swapB]=valA;
+        }
+        
+        return A;
+    }
+};
