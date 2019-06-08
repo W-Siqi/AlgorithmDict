@@ -1,0 +1,63 @@
+class Solution {
+public:
+    vector<int> addNegabinary(vector<int>& arr1, vector<int>& arr2){ 
+        int maxLen=arr1.size();
+        if(arr2.size()>maxLen){
+            maxLen=arr2.size();
+        }
+    
+        vector<int> arrSum(maxLen);
+        for(int i=0;i<maxLen;i++){
+            int a1=0,a2=0;
+            int index1=i-(maxLen-arr1.size());
+            int index2=i-(maxLen-arr2.size());
+           
+            if(index1>=0){
+                a1=arr1[index1];
+            }
+            
+            if(index2>=0){
+                a2=arr2[index2];
+            }
+            
+            arrSum[i]=a1+a2;
+        }
+    
+        reverse(arrSum.begin(),arrSum.end());
+        for(int i=0;i<arrSum.size();i++){
+            while(arrSum[i]>1){
+                arrSum[i]-=2;
+                // jin wei 0 +1 +1   
+                int pos1=i+1;
+                int pos2=i+2;
+                if(pos1>=arrSum.size()){
+                    arrSum.push_back(1);
+                    arrSum.push_back(1);
+                }
+                else if(arrSum[pos1]>0){
+                   arrSum[pos1]--;
+                }
+                else{
+                    arrSum[pos1]++;
+                    if(pos2>=arrSum.size()){
+                        arrSum.push_back(1);
+                    }
+                    else{
+                        arrSum[pos2]++;
+                    }
+                }         
+            } 
+        }
+    
+        reverse(arrSum.begin(),arrSum.end());
+        while(arrSum.front()==0){
+            if(arrSum.size()==1){
+                break;
+            }
+            else{
+                arrSum.erase(arrSum.begin());
+            }
+        }
+        return arrSum;
+    };
+};
