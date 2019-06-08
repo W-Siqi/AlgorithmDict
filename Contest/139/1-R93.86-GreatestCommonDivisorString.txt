@@ -1,0 +1,65 @@
+class Solution {
+public:
+    string gcdOfStrings(string str1, string str2) {
+         string bigStr;
+        string smallStr;
+        if(str1.length()>str2.length()){
+            bigStr=str1;
+            smallStr=str2;
+        }
+        else{
+            bigStr=str2;
+            smallStr=str1;
+        }
+        
+        int smStrLen=smallStr.length();
+        int divideCount=0;
+        
+        string X="";
+        while(divideCount<=smallStr.length()){
+            divideCount++;
+            
+            if(smStrLen%divideCount>0){
+                continue;
+            }
+            else{
+                int len=smStrLen/divideCount;
+                string divider=Sub(smallStr,len);
+                
+                if(IsDivided(bigStr,divider)&&IsDivided(smallStr,divider)){
+                    X=divider;
+                    break;
+                }
+            }            
+        }
+        
+        return X;
+    }
+    
+    bool IsDivided(string src, string divider){
+        int len=divider.length();
+        for(int start=0;start<src.length();start+=len){
+            int end=start+len;// not included
+            
+            if(end>src.length()){
+                return false;
+            }
+            else{
+                for(int i=0;i<len;i++){
+                    if(divider[i]!=src[start+i]){
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    string Sub(string src, int len){
+        return src.substr(0,len);
+    }   
+    
+};
+
+    
