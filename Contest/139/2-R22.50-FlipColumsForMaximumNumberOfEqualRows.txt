@@ -1,0 +1,57 @@
+class Solution {
+public:
+    int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
+         vector<int> signs(matrix.size(),-1);
+        // index, number
+        map<int,int> map;
+        for(int i=0;i<matrix.size();i++){
+            if(signs[i]!=-1){
+                continue;
+            }
+            else{
+                signs[i]=1;
+                int sameNumbers=1;
+                
+                for(int j=i+1;j<matrix.size();j++){
+                    if(CanBeSame(matrix[i],matrix[j])){
+                        sameNumbers++;
+                        signs[j]=1;
+                    }   
+                }
+                
+                map[i]=sameNumbers;
+            }
+        }
+        
+        auto iter=map.begin();
+        int max=1;
+        for(iter=map.begin();iter!=map.end();iter++){
+            int val=iter->second;
+            if(val>max){
+                max=val;
+            }
+        }
+        return max;     
+    };
+    
+     bool CanBeSame(vector<int> a, vector<int> b){
+        if(a[0]==b[0]){
+            //same mode
+            for(int i=0;i<a.size();i++){
+                if(a[i]!=b[i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+        else{
+            // diff mode
+            for(int i=0;i<a.size();i++){
+                if(a[i]==b[i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    };   
+};
