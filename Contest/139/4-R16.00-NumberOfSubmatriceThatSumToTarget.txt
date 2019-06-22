@@ -1,0 +1,47 @@
+class Solution {
+public:
+    int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target) {
+        int num=0;
+        for(int i=1;i<=matrix[0].size();i++){
+                num+=TraverseSubmatrix(matrix,i,target);
+        }
+        
+        return num;
+    }
+    
+    int TraverseSubmatrix(vector<vector<int>>& matrix, int lenX, int target){
+        int targetNum=0;
+        
+        // init
+        int x1=0;
+        int y1=0;
+        int sizeY=matrix.size();
+        int sizeX=matrix[0].size();
+        
+        vector<int> sums(sizeY);    
+        for(x1=0;x1+lenX-1<sizeX;x1++){
+            //pre calculate sums
+            for(int i=0;i<sizeY;i++){
+                int sum=0;
+                for(int j=x1;j<x1+lenX;j++){
+                    sum+=matrix[i][j];
+                }
+                sums[i]=sum;
+            }
+            
+            //traverse sums
+            for(int i=0;i<sums.size();i++){
+                int matrixSum=0;
+                for(int j=i;j<sums.size();j++){
+                    matrixSum+=sums[j];
+                    if(matrixSum==target){
+                        targetNum++;
+                    }
+                }
+            }
+            
+        }
+        
+        return targetNum;
+    }
+};
