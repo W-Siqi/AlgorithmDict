@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<string> findOcurrences(string text, string first, string second) {
+        vector<string> words=divide(text);
+        vector<string> result;
+        // for each?
+        for(int i=0;i<words.size()-2;i++){
+            string w1=words[i];
+            string w2=words[i+1];
+            string w3=words[i+2];
+            if(w1==first&&w2==second){
+                result.push_back(w3);
+            }
+        }
+        
+        return result;
+    }
+    
+    
+    vector<string> divide(string text){
+        vector<string> words;
+        int index=0;
+        int tSize=text.size();
+        while(index<tSize){
+            //read a word by end or space
+            string word="";
+            while(index<tSize){
+                if(text[index]==' '){
+                    index++;
+                    break;
+                }
+                
+                word=word+text[index];     
+                index++;
+            }
+            
+            words.push_back(word);
+        }
+        
+        return words;
+    }
+};
