@@ -1,0 +1,63 @@
+class Solution {
+public:
+    int numTilePossibilities(string tiles) {
+        auto candidates=FigureOutCandidates(tiles);
+
+        int num=0;      
+        int maxLetterLen=tiles.size()
+        for(int i=1;i<=maxLetterLen;i++){
+            num+=CalNum(candidates,i);
+        }
+        return num;
+    }
+    
+    vector<int> FigureOutCandidates(string tiles){
+        vector<int> candidates;
+        map<char,int> tMap;
+        for(int i=0;i<tiles.size();i++){
+            int c=tiles[i];
+            if(tMap.count(c)>0){
+                tMap[c]++;
+            }
+            else{
+                tMap[c]=1;
+            }
+        }
+        
+       
+        for( auto iter=tMap.begin();iter!=tMap.end();iter++){
+            candidates.push_back(iter->second);
+        }
+        
+        return candidates;
+    }
+    
+    // candidate: no repeat! no zero !
+    int CalNum(vector<int> candidates, int len){
+        if(len<=1){
+            return candidates.size();    
+        }
+        
+        int num=0;
+        vector<int> newCandidates;
+        for(int i=0;i<candidates.size();i++){
+            // choice candidates[i], and generate new candi..
+            newCandidates.clear();
+            for(int j=0;j<candidates.size();j++){
+                int remain=candidates[j];
+                if(j==i){
+                    remain--;
+                    if(remain>0){
+                        newCandidates.push_back(remain);
+                    }
+                }
+                else{
+                    newCandidates.push_back(remain);
+                }
+            }
+            
+            num+=CalNum(newCandidates,len-1);           
+        }
+        return num;
+    }
+};
