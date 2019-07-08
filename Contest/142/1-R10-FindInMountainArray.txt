@@ -1,0 +1,113 @@
+/**
+ * // This is the MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * class MountainArray {
+ *   public:
+ *     int get(int index);
+ *     int length();
+ * };
+ */
+class Solution {
+public:
+    int findInMountainArray(int target, MountainArray &mountainArr) {
+        int posMin=0,posMax=mountainArr.length()-1;
+        while(posMax-posMin >4){
+            ShinkRange(mountainArr,posMin,posMax);
+        }
+        int topIndex=FindTop(mountainArr,posMin,posMax);
+        int topVal=mountainArr.get(topIndex);
+        if(topVal<target){
+            return -1;
+        }
+        else if(topVal==target){
+            return topIndex;
+        }
+        else{
+            int result = UpSearch(mountainArr,0,topIndex,target);
+            if(result<0){         
+                result=DownSearch(mountainArr,topIndex,mountainArr.length()-1,target);
+            }
+            return result;
+        }
+    }
+    
+    //传引用
+    void ShinkRange(MountainArray &m,int &posMin,int &posMax){
+        int len=posMax-posMin;
+        int index1=posMin+len/3;
+        int index2=posMax-len/3;
+        int num1=m.get(index1);
+        int num2=m.get(index2);
+        if(num1==num2){
+            posMin=index1;
+            posMax=index2;
+        }
+        else if(num1<num2){
+            posMin=index1;
+        }
+        else if(num1>num2){
+            posMax=index2;
+        }
+    }
+    
+    int FindTop(MountainArray &m,int posMin,int posMax){
+        int front=m.get(posMin);
+        for(int i=posMin+1;i<=posMax;i++){
+            int val=m.get(i);
+            if(front>val){
+                return i-1;
+            }
+            front=val;
+        }
+        //ERROR place
+        return posMax;
+    }
+
+    int UpSearch(MountainArray &m,int posMin,int posMax,int target){
+        if(posMax-posMin<4){
+            for(int i=posMin;i<=posMax;i++){
+                if(m.get(i)==target){
+                    return i;
+                }
+            }
+            
+            return -1;
+        }
+        
+        int mid=(posMin+posMax)/2;   
+        int midVal=m.get(mid);
+        if(midVal==target){
+            return mid;
+        }
+        else if(midVal<target){
+            return UpSearch(m,mid+1,posMax,target);
+        } 
+        else{
+            return UpSearch(m,posMin,mid-1,target);
+        }
+    }
+    
+    int DownSearch(MountainArray &m,int posMin,int posMax,int target){
+        if(posMax-posMin<4){
+            for(int i=posMin;i<=posMax;i++){
+                if(m.get(i)==target){
+                    return i;
+                }
+            }
+            
+            return -1;
+        }
+        
+        int mid=(posMin+posMax)/2;   
+        int midVal=m.get(mid);
+        if(midVal==target){
+            return mid;
+        }
+        else if(midVal<target){
+             return DownSearch(m,posMin,mid-1,target);
+        } 
+        else{
+            return DownSearch(m,mid+1,posMax,target);
+        }
+    }
+};
