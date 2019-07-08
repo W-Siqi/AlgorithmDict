@@ -1,0 +1,66 @@
+class Solution {
+public:
+    vector<double> sampleStats(vector<int>& count) {
+        // mean
+        double sumCount=0;
+        double sumNum=0;
+        for(int i=0;i<count.size();i++){
+            sumCount+=count[i];
+            sumNum+=(count[i]*i);
+        }
+        double mean=sumNum/sumCount;
+        
+        // median
+        double index1,index2;
+        if((int)sumCount%2 ==0){
+            index1=sumCount/2;
+            index2=sumCount/2+1;
+        }
+        else{
+            index1=sumCount/2+0.5;
+            index2=sumCount/2+0.5;
+        }
+        
+        double num1=-1,num2=-1;
+        int countSum=0;
+        for(int i=0;i<count.size();i++){
+            if(index1<=countSum+count[i]&&num1<0){
+                    num1=i;
+            }
+            
+            if(index2<=countSum+count[i]&&num2<0){
+                    num2=i;
+            }
+                
+            countSum+=count[i];
+        }
+            
+        double median=(num1+num2)/2;
+        
+        // min max mode
+        double min,max;
+        bool hasVal=false;
+        
+        double maxCount=0;
+        double mode=0;
+        
+        for(int i=0;i<count.size();i++){
+            if(count[i]>0){
+                max=i;
+                
+                if(!hasVal){
+                    hasVal=true;
+                    min=i;
+                }
+            }
+            
+            if(count[i]>maxCount){
+                maxCount=count[i];
+                mode=i;
+            }
+        }                
+        
+        vector<double> result{min,max,mean,median,mode};      
+        return result;
+    } 
+};
