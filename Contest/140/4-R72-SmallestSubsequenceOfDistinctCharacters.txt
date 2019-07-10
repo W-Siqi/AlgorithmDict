@@ -1,0 +1,77 @@
+class Solution {
+public:
+    string smallestSubsequence(string text) {
+        map<char,vector<int>> posMa;
+        for(int i=0;i<text.size();i++){
+            posMa[text[i]].push_back(i);
+        }
+        
+        vector<char> allLetters;
+        for(auto x:posMa){
+            allLetters.push_back(x.first);
+        }
+        sort(allLetters.begin(),allLetters.end());
+        
+        string res="";
+        vector<bool> isUsed(allLetters.size(),false);
+        int curPos=-1;
+        while(!allUsed(isUsed)){
+            // find best letter 
+            for(int i=0;i<allLetters.size();i++){
+                // skip used letter
+                if(isUsed[i]) continue;
+                
+                // start trying
+                auto le=allLetters[i];
+                bool ok=true;
+                // front check
+                int index=-1;
+                for(auto ind:posMa[le]){
+                    if(ind>curPos){
+                        index=ind;
+                        break;
+                    }
+                }
+                if(index<0){
+                    continue;
+                }
+                // back check
+                for(int j=i+1;j<allLetters.size();j++){
+                    if(isUsed[j]) continue;
+                    auto le2=allLetters[j];
+                    auto indexes=posMa[le2];
+                    if(indexes.back()<index){
+                        ok=false;
+                        break;
+                    }
+                }
+                
+                // use this letter
+                if(ok){
+                    res=res+le;   
+                    isUsed[i]=true;
+                    curPos=index;
+                    break;
+                }
+            }
+        }
+        
+        return res;
+    }
+    
+    bool exist(string str, char c){
+        bool res=false;
+        for(auto x:str){
+            if(c==x) res=true;
+        }
+        
+        return res;
+    }
+    
+    bool allUsed(vector<bool> v){
+        for(auto x:v){
+            if(x==false) return false;
+        }
+        return true;
+    }
+};
