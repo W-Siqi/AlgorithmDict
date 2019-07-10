@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<string> sorted=strs;
+        vector<bool> musk(strs.size(),true); 
+        for(int i=0;i<sorted.size();i++){
+            sort(sorted[i].begin(),sorted[i].end());
+        }
+        
+        vector<vector<string>> res;
+        for(int i=0;i<sorted.size();i++){
+            //skip check
+            if(!musk[i]) continue;
+            
+            //build group
+            string src=sorted[i];
+            vector<string> group;
+            for(int j=i;j<sorted.size();j++){
+                if(sorted[j]==src){
+                    group.push_back(strs[j]);  
+                    musk[j]=false;
+                }
+            }
+            
+            res.push_back(group);
+        }
+        
+        return res;
+    }
+};
