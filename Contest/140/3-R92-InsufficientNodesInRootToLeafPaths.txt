@@ -1,0 +1,46 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* sufficientSubset(TreeNode* root, int limit) {
+        if(Check(root,0,limit)){
+            return root;
+        }
+        else{
+            return nullptr;
+        }
+    }
+    
+    bool Check(TreeNode* root, int sum,int limi){
+        if(root->left == nullptr && root->right ==  nullptr){
+            // check val 
+            int val=root->val+sum;
+            if(val < limi)
+                return false;
+            else
+                return true;
+        }
+        
+        bool lok=false,rok=false;
+        
+        if(root->left) lok=Check(root->left,sum + root->val,limi);
+        if(!lok) root->left=nullptr;
+        
+        if(root->right) rok=Check(root->right,sum + root->val,limi);
+        if(!rok) root->right=nullptr;
+        
+        if(!lok && !rok){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+};

@@ -29,7 +29,11 @@ example:
 ## **使用map：**
 我R05和R84的区别，就是在组成group的方式，其他排序都是用sort的。  
 我自己是用O（n2）的复杂度，而这种情况，可以用map来，因为map的查找效率是lgn，这样就变成O（nLgn）快了好多，而且容易写。
-# 7-Divide Two Int
+## 写法 for（auto c:str）
+这样不容易出现下标错误，而且写起来方便。  
+**但是**： 好像速度要慢一点？
+
+# ？？-Divide Two Int
 KEY: 位移操作
 
 倒着减能减吗？
