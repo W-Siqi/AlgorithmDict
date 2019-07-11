@@ -1,54 +1,31 @@
 class Solution {
 public:
-    int divide(int dividend, int divisor) {
-        if(dividend==INT_MIN&&divisor==1) return INT_MIN;
-        if(dividend==INT_MIN&&divisor==-1) return INT_MAX;
-        
-        bool isNag = IsNag(dividend,divisor);
-        dividend = NABS(dividend);
-        divisor = NABS(divisor);
-
-        int rm = dividend;
-        int res = 0;
-        
-        while(rm <= divisor){
-            int resVal=1;
-            long int diviVal = divisor;
+    int lengthOfLongestSubstring(string s) {
+        int start=0, end=0; 
+        int res=0;
+        map<char,int> record;
+        while(end<s.size()){
+            auto ch=s[end];
             
-            while(rm - diviVal <= diviVal){
-                resVal = resVal<<1;
-                diviVal = -((-diviVal)<<1);
-            }            
+            if(record.count(ch)>0){
+                // save len
+                int len=end-start;
+                res=max(res,len);
+                // reboot
+                start=record[ch]+1;
+                end=start;
+                record.clear();
+                record[s[start]]=start;
+            }
+            else{
+                record[ch]=end;
+            } 
             
-            rm-=diviVal;
-            res+=resVal;
+            end++;
         }
-        
-        if(isNag){
-            return -res;
-        }
-        else{
-            return res;
-        }
-    }
-    
-    bool IsNag(int a, int b){
-        if(a > 0 && b > 0 ){
-            return false;
-        }
-        else if(a < 0 && b < 0){
-            return false;
-        }
-        
-        return true;
-    }
-    
-    int NABS(int a){
-        if(a>0){
-           return -a;
-        }
-        else{
-           return a;
-        }
+        // last check
+        int len=end-start;
+        res=max(res,len);
+        return res;
     }
 };
