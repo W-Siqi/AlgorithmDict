@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int start=0, end=0; 
+        int res=0;
+        vector<int> record(128,-1);
+        while(end<s.size()){
+            auto ch=s[end];
+            
+            if(record[ch]>=0){
+                // save len
+                int len=end-start;
+                res=max(res,len);
+                // reboot
+                start=record[ch]+1;
+                end=start;
+                record.assign(128,-1);
+                record[s[start]]=start;
+            }
+            else{
+                record[ch]=end;
+            } 
+            
+            end++;
+        }
+        // last check
+        int len=end-start;
+        res=max(res,len);
+        return res;
+    }
+};
