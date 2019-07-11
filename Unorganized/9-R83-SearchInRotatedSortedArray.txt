@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        if(nums.size()<3){
+            for(int i=0;i<nums.size();i++){
+                if(nums[i] == target) return i;
+            }
+            return -1;
+        }
+        
+        //find point
+        int p=0;
+        for(int i=0;i<nums.size()-1;i++){
+            if(nums[i]>nums[i+1]) {
+                p=i;
+                break;
+            }
+        }
+        
+        int res=-1;
+        res=bs(nums,target,0,p);
+        if(res<0)
+            res=bs(nums,target,p+1,nums.size()-1);
+        
+        return res;
+    }
+    
+    int bs(vector<int> nums,int tar,int l,int r){
+        while(l<=r){
+            auto mid=(l+r)/2;
+            auto val=nums[mid];
+            if(val==tar){return mid;}
+            else if(val>tar){r=mid-1;}
+            else {l=mid+1;}
+        }
+        return -1;
+    }
+};

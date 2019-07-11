@@ -58,3 +58,18 @@ log（a/b）=log(a)-log(b)
 两个版本，R05是用map，R50是用hash  
 由于map的频繁查找和初始化，导致速度比hash慢了50倍！！   
 另外，对于字母的，可以手动用vector<int> hash[128], 用ASCII码直接hash  
+
+## 9-Search In Rotated Array
+这题没什么，应该是简单题。
+## 二分查找标准写法
+之前是弄递归的函数，而且还搞if特例，太麻烦  
+```
+  while(l<=r){
+    auto mid=(l+r)/2;
+            auto val=nums[mid];
+            if(val==tar){return mid;}
+            else if(val>tar){r=mid-1;}
+            else {l=mid+1;}
+    }
+    return -1;
+```
