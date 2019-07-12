@@ -1,0 +1,55 @@
+class LRUCache {
+public:
+    unordered_map<int,int> hash;
+    list<int> keyTiming;
+    int capa=0;
+    LRUCache(int capacity) {
+        capa = capacity;
+    }
+    
+    int get(int key) {
+        if(hash.count(key)>0){
+            // reactive this key
+            Reactive(key);
+            return hash[key];   
+        }
+        else
+            return -1;
+    }
+    
+    void put(int key, int value) {
+        // same key check
+        if(hash.count(key)>0){
+            Reactive(key);
+            hash[key]=value;
+            return;
+        }
+        
+        if(keyTiming.size() >= capa){
+            // remove
+            hash.erase(keyTiming.front());
+            keyTiming.pop_front();
+        }      
+        
+        // add key, val
+        hash[key]=value;
+        keyTiming.push_back(key);
+    }
+    
+    void Reactive(int key){
+        for(auto iter=keyTiming.begin();iter!=keyTiming.end();iter++){
+                if(*iter == key){
+                    keyTiming.erase(iter);
+                    keyTiming.push_back(key);
+                    break;
+                }
+        }
+    }
+};
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */

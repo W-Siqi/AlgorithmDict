@@ -92,3 +92,11 @@ log（a/b）=log(a)-log(b)
 找孤岛了，核心是递归连通块没错。  
 但是结束之后再从头遍历找，未免有点O（n^2）？？  
 ## 可以优化的，到时候再说。
+
+## LRU Cache
+O(1)的访问速度，我能想到的只有hash了（STL里面就是 unordered_map）
+## 如何表示未赋值？ INIFITY？
+这里我一开始使用vector放key的，这样缺省值就很麻烦，因为key是任意值。  
+目前的，要么用bool musk[]，要么（在这个情形下） 直接用list  
+## 记录LRU
+目前的用list排序，reactive的话再放到head就好，永远保证head是要清除的
