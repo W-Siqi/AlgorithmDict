@@ -1,0 +1,42 @@
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        int coordX,coordY;
+        int res=0;
+        while(Find(grid,coordX,coordY)){
+            Spread(grid,coordX,coordY);
+            res++;
+        }
+        return res;
+    }
+    
+    void Spread(vector<vector<char>>& grid, int x, int y){
+        if(x < 0 || x >= grid.size()) 
+            return;
+        if(y < 0 || y >= grid[0].size())
+            return;
+        
+        if(grid[x][y] == '*' || grid[x][y] == '0')
+            return;
+        
+        grid[x][y]='*';
+        Spread(grid,x+1,y);
+        Spread(grid,x-1,y);
+        Spread(grid,x,y+1);
+        Spread(grid,x,y-1);
+    }
+    
+    bool Find(vector<vector<char>>& grid, int &x, int &y){
+        for(int i=0;i < grid.size();i++){
+            for(int j=0;j < grid[0].size();j++){
+                if(grid[i][j] == '1'){
+                    x=i;
+                    y=j;
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+};
