@@ -59,7 +59,7 @@ log（a/b）=log(a)-log(b)
 由于map的频繁查找和初始化，导致速度比hash慢了50倍！！   
 另外，对于字母的，可以手动用vector<int> hash[128], 用ASCII码直接hash  
 
-## 9-Search In Rotated Array
+# 9-Search In Rotated Array
 这题没什么，应该是简单题。
 ## 二分查找标准写法
 之前是弄递归的函数，而且还搞if特例，太麻烦  
@@ -74,7 +74,7 @@ log（a/b）=log(a)-log(b)
     return -1;
 ```
 
-## 10-Multiply Strings
+# 10-Multiply Strings
 大数相乘吗，最直白的，就是模拟计算器嘛。  
 但是直接这么做，是R10...，至于优化的话，下面有
 ## 优化-批处理 
@@ -85,18 +85,25 @@ log（a/b）=log(a)-log(b)
 然而，可以不这么做，可以等全部加完了，再统一进位，这样只需要进位一次。  
 速度从76ms 到了 8ms
 
-## 11-Sum Root To Leaf Numbers
+# 11-Sum Root To Leaf Numbers
 我觉得不配median难度，这道就是简单的树递归，没啥花样。 就是传递数字的时候，父节点*10+子节点=新数字。
 
-## 11-Number of iland
+## 12-Number of iland
 找孤岛了，核心是递归连通块没错。  
 但是结束之后再从头遍历找，未免有点O（n^2）？？  
 ## 可以优化的，到时候再说。
 
-## LRU Cache
+# 13-LRU Cache
 O(1)的访问速度，我能想到的只有hash了（STL里面就是 unordered_map）
 ## 如何表示未赋值？ INIFITY？
 这里我一开始使用vector放key的，这样缺省值就很麻烦，因为key是任意值。  
 目前的，要么用bool musk[]，要么（在这个情形下） 直接用list  
 ## 记录LRU
 目前的用list排序，reactive的话再放到head就好，永远保证head是要清除的
+
+# ZigZag 
+## KEY:归纳/数据结构
+这题，其实观察一下，就会发现他的下标和row的关系是有固定周期的。    
+
+要么直接根据周期，直接输出。  
+要么用数据结构来中转一下（rt比较高，但是好写）。 这里最笨的就是用grid来存，当然，我是用vector<vector<char>> 稍微好一点，至少不超时。

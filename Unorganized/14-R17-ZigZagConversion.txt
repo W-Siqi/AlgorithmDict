@@ -1,0 +1,44 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows==1)
+            return s;
+        
+        vector<list<char>> lines(numRows);
+        int l=0;
+        bool increase=true;
+        for(int i=0;i<s.size();i++){
+            // add to cur line
+            lines[l].push_back(s[i]);
+            
+            // change line
+            if(increase){
+                if(l == numRows-1){
+                    l--;
+                    increase=false;
+                }
+                else{
+                    l++;
+                }
+            }
+            else{
+                if(l == 0){
+                    l++;
+                    increase=true;
+                }
+                else{
+                    l--;
+                }
+            }
+        }
+        
+        string res="";
+        for(auto line:lines){
+            for(auto ch:line){
+                res+=ch;
+            }
+        }
+        
+        return res;
+    }
+};
