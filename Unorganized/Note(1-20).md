@@ -115,3 +115,11 @@ O(1)的访问速度，我能想到的只有hash了（STL里面就是 unordered_m
 所以我是一边乘分母，一边除以分子，防止溢出。因此结果是要用double来保存（**即使是double，也会有精度不够的时候，导致转了int结构不正确**）  
 
 当然，这次，其实用DP来算更快！
+
+# 16-Validate Binary Search Tree
+## KEY:树递归
+这题十分容易犯错的是，把INT_MIN和INT_MAX当做INIFITE来使用了，从而忘记了val是可以等于INT_MIN之类的    
+
+对于这个，有两种办法：  
+1-用bool flag 记录是否为无限大  
+2-把val 从int 提到long 层面进行比较（推荐，因为更方便）
