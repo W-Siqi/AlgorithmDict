@@ -1,0 +1,41 @@
+class Solution {
+public:
+    vector<int> distributeCandies(int candies, int num_people) {
+        int w=(1+num_people)*num_people/2;
+        int n=num_people;
+        int loopCount=0;
+        int rmCan=candies;
+        while(true){
+            // next exp num
+            int tmp=w+loopCount*n*n;
+            if(rmCan < tmp)
+                break;
+            else{
+                rmCan-=tmp;
+                loopCount++;
+            }
+        }
+        
+        vector<int> res(n);
+        // for base
+        for(int i=0;i<n;i++){
+            res[i]=(i+1) * loopCount + num_people*(loopCount)*(loopCount-1)/2;
+        }
+        
+        // for remain       
+        for(int i=0;i<num_people;i++){
+            int tmp = num_people * loopCount + i + 1;
+            if(rmCan <= tmp){
+                res[i]+= rmCan;
+                rmCan=0;
+                break;
+            }
+            else{
+                res[i] += tmp;
+                rmCan-=tmp;
+            }
+        }
+        
+        return res;
+    }
+};

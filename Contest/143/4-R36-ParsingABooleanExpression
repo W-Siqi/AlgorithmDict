@@ -1,0 +1,63 @@
+// use recursion
+class Solution {
+public:
+    bool parseBoolExpr(string expression) {
+        return Parsing(expression);
+    }
+    
+    bool Parsing(string exp){
+        if(exp == "t")
+            return true;
+        if(exp == "f")
+            return false;
+        
+        char op=exp[0];
+        bool hasT=false,hasF=false;
+        int start=2;
+        while(start<exp.size()-1) {
+            // get a sub exp from start
+            int paren=0;
+            int end=start;
+            while(end<exp.size()-1){
+                if(exp[end] ==  '(')
+                    paren++;
+                else if(exp[end] == ')')
+                    paren--;
+                else if(exp[end] == ','){
+                    if(paren == 0)
+                        break;
+                }
+                end++;
+            }
+            
+            // parsing
+            auto newExp=exp.substr(start, end-start);
+            start=end+1;
+            if(Parsing(newExp) == true)
+                hasT=true;
+            else
+                hasF=true;
+        }
+        
+        if(op == '|'){
+            if(hasT)
+                return true;
+            else
+                return false;
+        }
+        else if(op == '&'){
+            if(hasF)
+                return false;
+            else
+                return true;
+        }
+        else if(op == '!'){
+            if(hasT) 
+                return false;
+            else 
+                return true;
+        }
+        else
+            return false;
+    }
+};

@@ -1,0 +1,81 @@
+// original version
+class Solution {
+public:
+    bool parseBoolExpr(string expression) {
+        while(expression.size() > 1){
+            Reduce(expression);
+        }
+        
+        if(expression == "t")
+            return true;
+        else
+            return false;
+    }
+    
+    void Reduce(string& expression){
+        vector<char> tf;
+        char op;
+        int start,end;
+        // find
+        for(int i=0;i<expression.size();i++){
+            if(expression[i] == 't' || expression[i] == 'f'){
+                int cur=i;
+                start=i;
+                while(expression[cur] == 't' || expression[cur] == 'f'){
+                    tf.push_back(expression[cur]);
+                    cur+=2;
+                }
+                end= cur-2;
+                
+                if(expression[end + 1] != ')'){
+                    // not this one
+                    tf.clear();
+                    i=end+1;
+                    continue;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        
+        op=expression[start-2];
+        char res;
+        if(op == '&'){
+            res='t';
+            for(auto c:tf){
+                if(c == 'f'){
+                    res='f';
+                    break;
+                }
+            }
+        }
+        else if(op == '|'){
+            res = 'f';
+            for(auto c:tf){
+                if(c == 't'){
+                    res='t';
+                    break;
+                }
+            }
+        }
+        else if(op == '!'){
+            if(tf[0] == 't')
+                res = 'f';
+            else
+                res = 't';
+        }
+        
+        // replace
+        string newE="";
+        for(int i=0;i <= start-3;i++)
+            newE+=expression[i];
+        
+        newE+=res;
+        
+        for(int i=end+2;i<expression.size();i++)
+            newE+=expression[i];
+        
+        expression=newE;
+    }
+};

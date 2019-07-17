@@ -1,0 +1,52 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
+        vector<TreeNode*> fori;
+        if(root== nullptr)
+                    return fori;
+        Delete(root,to_delete,fori,nullptr);
+        return fori;
+    }
+    
+    void Delete(TreeNode* root,vector<int>& to_delete, vector<TreeNode*>& fori, TreeNode* par){
+        if(root == nullptr)
+            return;
+        
+        int val=root->val;
+        bool isDele=false;
+        for(auto a:to_delete){
+            if(a == val){
+                isDele=true;
+                break;
+            }
+        }
+        
+        if(isDele){
+            if(par){
+               if(par->left ==  root)
+                par->left = nullptr;
+              if(par->right == root)
+                par->right = nullptr;
+            }
+            
+            Delete(root->left,to_delete,fori,nullptr);
+            Delete(root->right,to_delete,fori,nullptr);
+        }
+        else{
+            if(par == nullptr)
+                fori.push_back(root);
+            
+            Delete(root->left,to_delete,fori,root);
+            Delete(root->right,to_delete,fori,root);
+        }
+    }
+};

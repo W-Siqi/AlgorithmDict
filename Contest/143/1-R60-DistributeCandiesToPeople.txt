@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<int> distributeCandies(int candies, int num_people) {
+        vector<int> res(num_people,0);
+        int rm=candies;
+        int i=0;
+        int c=1;
+        while(rm > 0){
+            if(rm >= c){
+                res[i] += c;
+                rm -= c;
+            }
+            else{
+                res[i] += rm;
+                break;
+            }
+            
+            c++;
+            
+            i++;
+            if(i >= res.size())
+                i=0;
+        }
+        return res;
+    }
+};

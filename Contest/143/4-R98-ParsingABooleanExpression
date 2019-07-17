@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool parseBoolExpr(string expression) {
+        stack<char> st;
+        for(auto c:expression){
+            if(c == ')'){
+                // pop and replace res
+                bool hasT=false,hasF=false;
+                char res;
+                while(true){
+                    auto t=st.top();
+                    st.pop();
+                    if(t == '&'){
+                        res = hasF? 'f':'t';
+                        break;
+                    }
+                    else if(t == '|'){
+                        res = hasT? 't':'f';
+                        break;
+                    }
+                    else if(t == '!'){
+                        res = hasT? 'f':'t';
+                        break;
+                    }
+                    else if( t == 't')
+                        hasT=true;
+                    else if(t == 'f')
+                        hasF=true;
+                }
+                
+                st.push(res);
+            }
+            else{
+                st.push(c);
+            }
+        }
+        
+        return st.top() == 't'? true:false;
+    }
+};
