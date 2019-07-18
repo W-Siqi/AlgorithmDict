@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        vector<int> res;
+        vector<bool> musk(arr1.size(),true);
+        for(int i=0;i<arr2.size();i++){
+            auto tar=arr2[i];
+            for(int j=0;j<arr1.size();j++){
+                if(musk[j] && arr1[j] == tar){
+                    res.push_back(tar);
+                    musk[j]=false;
+                }
+            }
+        }
+        
+        vector<int> rm;
+        for(int i=0;i<musk.size();i++){
+            if(musk[i])
+                rm.push_back(arr1[i]);
+        }
+        
+        sort(rm.begin(),rm.end());
+        
+        for(auto a:rm)
+            res.push_back(a);
+        
+        return res;
+    }
+};

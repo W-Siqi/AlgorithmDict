@@ -1,0 +1,48 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        if(!root) return nullptr;
+        
+        return Find(root);
+    }
+    
+    int CalDep(TreeNode* root, int d){
+        if(root->left && root->right){
+            return max(CalDep(root->left,d+1),CalDep(root->right,d+1));
+        }
+        else if (root->left)
+            return CalDep(root->left, d+1);
+        else if(root->right)
+            return CalDep(root->right,d+1);
+        else
+            return d+1;
+    }
+    
+    TreeNode* Find(TreeNode* root){
+        if(root->left && root->right){
+            auto ld=CalDep(root->left,0);
+            auto rd=CalDep(root->right,0);
+            if(ld == rd)
+                return root;
+            else if(ld>rd)
+                return Find(root->left);
+            else
+                return Find(root->right);
+        }
+        else if(root->left)
+            return Find(root->left);
+        else if(root->right)
+            return Find(root->right);
+        else
+            return root;
+    }
+};
