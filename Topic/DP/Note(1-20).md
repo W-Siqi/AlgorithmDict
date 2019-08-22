@@ -115,3 +115,6 @@ for(int i=0;...){
 ## b） 有比DP更快的吗？
 这题是有的，因为他根本不需要遍历in the first place!
 
+# 12 - Unique Paths II
+## a) why dp: 分类树、排列组合进度，可递归
+还是比较经典的一个模型了，就是有block的时候记为1就好。
