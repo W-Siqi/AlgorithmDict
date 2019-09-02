@@ -1,0 +1,31 @@
+// 这个就别动态的+= 来构建字符串,会爆炸的。
+
+string URLify(int src){
+    int count = 0;
+    for(int i = 0 ; i < src.size() ; i++){
+        if(ch == ' '){
+            count+=3;
+            while(i + 1 < src.size() && src[i + 1] == ' '){
+                i++;
+            }
+        }
+        else{
+            count++;
+        }
+            
+    }
+    char res[count];
+    int ptr = 0;
+    for(int i = 0; i < src.size() ; i++){
+        if(ch == ' '){
+            while(i + 1 < src.size() && src[i + 1] == ' ')
+                i++;
+            res[ptr++] = '%'; 
+            res[ptr++] = '2'; 
+            res[ptr++] = '0'; 
+        }
+        else{
+            res[ptr++] = src[i];
+        }
+    }
+}

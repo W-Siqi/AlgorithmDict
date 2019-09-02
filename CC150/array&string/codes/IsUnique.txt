@@ -1,0 +1,13 @@
+// 这是一个很经典的，两层for遍历量量元素之间关系的场景
+
+bool IsUnique(string s){
+    if(s.size() > 256)
+        return false;
+    for(int i = 0 ; i < s.size() ; i++){
+        for(int j = i + 1; j < s.size(); j++){
+            if(s[i] == s[j])
+                return false;
+        }
+    }
+    return true;
+}
