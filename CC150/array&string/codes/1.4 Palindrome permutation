@@ -1,0 +1,24 @@
+// 统计字符的时候，可以用ASCII码来hash
+// ASCII 扩展后的取值是0~255， 最小的一个是0
+
+bool PalindromePermutation(string src ){
+    vector<int> hash(26,0);
+    for(auto ch:src){
+        if(ch >= 'a' && ch <= 'z')
+            hash[ch - 'a']++;
+        else if(ch >= 'A' && <= 'Z')
+            hash[ch - 'A']++;
+    }
+
+    bool hasCenter = true;
+    for(auto count:hash){
+        if(count%2 == 1){
+            if(hasCenter)
+                return false;
+            else
+                hasCenter = true;
+        }
+    }
+
+    return true;
+}

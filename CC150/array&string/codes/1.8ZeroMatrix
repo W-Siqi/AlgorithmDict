@@ -1,0 +1,28 @@
+// 和之前的几个string buid 一样， run两遍，第一遍摸
+void ZeroMatrix(vector<vector<int>> matrix){
+   vector<bool> rows(matrix.size());
+   vector<bool> columns(maxtrix[0].size());
+
+   for(int i = 0 ; i < matrix.size() ; i++){
+       for(int j = 0 ; j < maxtrix[0].size() ;j++){
+           if(matrix[i][j] == 0){
+               row[i] = true;
+               colums[j] = true;
+           }
+       }
+   } 
+
+   for(int i = 0 ; i < rows.size() ; i++){
+       if(rows[i]){
+           for(int j = 0 ; j < matirx[0].size() ; j++)
+                matirx[i][j] = 0;
+       }
+   }
+
+    for(int i = 0 ; i < columns.size() ; i++){
+       if(columns[i]){
+           for(int j = 0 ; j < matirx.size() ; j++)
+                matirx[j][i] = 0;
+       }
+   }
+}

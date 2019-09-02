@@ -1,0 +1,44 @@
+// runner technique 
+// 通过观察情况，来剪枝
+bool OneWay(string s1, string s2){
+    int lenDiff = abs(s1.size() - s2.size());
+    if(lenDiff > 1)
+        return false;
+
+    int ptr1=0;
+    int ptr2=0;
+    bool hasOperation = false;
+    while(ptr1 < s1.size()){
+        if(s1[ptr1] == s2[ptr2]){
+            ptr1++;
+            ptr2++;
+        }
+        else{
+            if(hasOperation)
+                return false;
+            else{
+                hasOperation = true;
+                // findout which kind of operation
+                if(ptr1 < s1.size() - 1){
+                    if(lenDiff == 0){
+                         ptr1++;
+                         ptr2++;
+                    }
+                    else if(s1[ptr1] == s2[ptr2 + 1])
+                        ptr2++;
+                    else if(s1[ptr1 + 1] == s2[ptr2])
+                        ptr1++;
+                    else
+                        return false;
+                }
+                else{
+                    // change
+                    ptr1++;
+                    ptr2++;
+                }
+            }
+        }
+    }
+
+    return true;
+}
