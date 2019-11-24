@@ -1,0 +1,25 @@
+// 考点1：比较绕的一个下标定律，如果是对着中心翻转的话；x = size - x -1
+
+// 考点2：in-place 的数据操作。
+//      很多时候就会有这样限制你mapping整个空间来操作
+//      可以考虑，用临时变量 + 有规律地操作罢了。
+
+// 如何旋转90度
+//   别忘了一些数学定理哇，沿着对角线翻转，等于是x,y的坐标互换。
+//   
+
+
+void RotateMatrix(vector<vector<int>> m){
+    vector<vector<int>> res(m.size(),vector<int>(m[0].size(),0));
+    int rowCount = m.size();
+    int columnCount = m[0].size();
+
+    for(int i = 0 ; i < m.size() ; i++){
+        for(int j = 0 ; j < m[0].size() ; j++){
+            x = 
+            res[columnCount - j -1][i];
+        }
+    }
+
+    return res;
+}

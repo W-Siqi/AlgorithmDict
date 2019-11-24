@@ -18,7 +18,7 @@ int NodesNum(Node* root){
     return root + NodesNum(root->lchild) + NodesNum(root->rchild);
 }
 
-Node* GetByCounter(Node* root, int& count){
+Node* GetByCounter(Node* root, int & count){
     if(root == null)
         return null;
 
