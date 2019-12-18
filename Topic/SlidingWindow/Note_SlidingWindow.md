@@ -66,7 +66,7 @@ one way is, 'start' always means the first elemnt in the array, 'end' means the 
 initally, start = 0, end = 1.  
 
 ### frequenly mistake  
-forget the check the case at the edge, which is not in the while{} loop.
+forget the check the case at the edge, which is the case when escape the while{} loop.
 
 ### count qualified cases VS optimal case
 when to restart to the next turn, I firstly unconciously move the start ponter till...  
