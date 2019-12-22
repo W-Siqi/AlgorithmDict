@@ -11,11 +11,23 @@ when finish a round of subarray checking, we can based on previous infomation to
    
 For this reason: this most important question for sliding window is ,how we start for the next round of subarray traversal? 
 
-# Implementation
-two pointers: 
-end pointer stands for the index that is going to check.   
-start pointer stands for the start of the end pointer of this round.
+# Implementation & two pointers 
+There are two cases:  
+1. fixed lengths: (end - start)   is a const 
+2. flexible lengths: we usually use two pointers(start and end) to represent the window  
 
+**Q: what should 'start' and 'end' stand for?** 
+1. 'end' point to the element  that is going to add to the set. 
+2. 'start' point to the first element in the subarray.  
+3. 'end' is prio than 'start': when 'end' == 'start', it means no element in the set
+
+**Q: what is the end of windows traverse?**  
+1. basically, when 'start' pointer reach the end.  
+2. to opmize, some times when 'end' pointer reach the end, there is no need to traverse any mroe. 
+
+**Frequent Bug:**  
+forget to count the edge case when loop break, and 'end' points to the end.  
+Because the result updating is in the loop. Sometimes we forget to update this one.
 # EXAMPLES
 ## 1- Permutation in String
 https://leetcode.com/problems/permutation-in-string/  
@@ -71,3 +83,9 @@ forget the check the case at the edge, which is the case when escape the while{}
 ### count qualified cases VS optimal case
 when to restart to the next turn, I firstly unconciously move the start ponter till...  
 however this is to count the qualified cases, I made mistakes in skipping impossible cases...
+
+## 5- Substring with Concatenation of All Words
+https://leetcode.com/problems/substring-with-concatenation-of-all-words/  
+### trick of this problem   
+we divide travse into many tracks by different offsert of the start.  
+in each track, we use the sliding window.  

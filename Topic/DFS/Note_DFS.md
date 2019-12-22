@@ -1,7 +1,12 @@
 # The dataflow in DFS: top-down and bottom-up
-keep the concept in mind. help to code with clear mind. 
+keep the concept in mind. help to code with clear mind.   
+## top-down: 
+give the chance to pass the history of accumulative value to child.   
+## bottom-up: 
+give the chance to gather infomation from child and then make judgement based on it
 
 # Strategy Searching
+DFS is a very common case to search the strategy.
 1. Remove Boxes
 https://leetcode.com/problems/remove-boxes/
 hard！
@@ -12,13 +17,16 @@ https://leetcode.com/problems/strange-printer/
 类型同上？
 
 # The recursive defination
+The data structure 'tree' itself is defined recursively.   
+So the formula to check a tree is:  
+a. check left child  
+b. check right child  
+c. check root
 1. Validate Binary Search Tree
-判断一个树是不是BST
 https://leetcode.com/problems/validate-binary-search-tree/
 
 2. Same Tree
 https://leetcode.com/problems/same-tree/
-判断两个数的是不是一样的（结构和数据）
 
 3. Balanced Binary Tree
 https://leetcode.com/problems/balanced-binary-tree/
@@ -29,47 +37,58 @@ https://leetcode.com/problems/symmetric-tree/
 判断一个树是不是中心对称的
 
 # Answer Searching
+the simplest scenario:   
+if we want to find the optimal answer, just  traverse it and update min/max value of something equal.
 1. Maximum Depth of Binary Tree
 https://leetcode.com/problems/maximum-depth-of-binary-tree/
-计算一个树的最大深度
+
 
 2. Minimum Depth of Binary Tree
 https://leetcode.com/problems/minimum-depth-of-binary-tree/
-找深度最低的叶子节点，返回深度
+
 
 # Path of the tree
+path the history in the **top-down** dataflow. When reach the leave node. There is the path.  
+
+In most cases, we can use **Backtraing** to skip the tedious memory assign, which is performance friendly. 
 1. Path Sum
-https://leetcode.com/problems/path-sum/
-给定一个target，判断有没有一条path的和等于target
+  https://leetcode.com/problems/path-sum/  
+If there is a path that the sum of data is equal to the given value.
 2. Path Sum II
 https://leetcode.com/problems/path-sum-ii/
-把等于target的所有路径，都打印出来
+Find and print all paths that the sum of data is equal to the given value.
 3. Insufficient Nodes in Root to Leaf Paths
-https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/
-删除所有这样的node，所有经过他的path的合都小于一个给定值
+https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/  
+delete all node: that all path through this node is the path with sum less than a given value.    
+(PS: This can use bottom-up method to make an decision accroding to children's situations)
 4. Sum Root to Leaf Numbers
-https://leetcode.com/problems/sum-root-to-leaf-numbers/
-每个path，代表由叶节点串成的一个数字，计算他们的和.（有巧解，数字*深度，直接分开加）
+https://leetcode.com/problems/sum-root-to-leaf-numbers/  
+every node stands for 1-9. So each path stands for a number. Sum all numbers form in this method.  
+(PS: this can be both top-down and bottom-up. In the bottom-up, sum += depth * value * numberOfChildren)
 
-# tree structure manipulating
-1. Flatten Binary Tree to Linked List
-https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
-把一个二叉树展平成一个链表
 
-2. Delete Nodes And Return Forest
-https://leetcode.com/problems/delete-nodes-and-return-forest/
-删掉一系列的节点后，返回剩下的所有的树（即森林）
-
-# Global Table: BFS VS DFS
+# BFS VS DFS
+When it comes to 'each row' related probelm. It is very easy to use BFS.   
+But with DFS with more attention about depth, we can solve it with less and more clean code.
 1. Binary Tree Right Side View
-https://leetcode.com/problems/binary-tree-right-side-view/
-最粗暴的话BFS是一定可行的，但是DFS可以的。
+https://leetcode.com/problems/binary-tree-right-side-view/  
+just alway try to traverse the right child.
 2. Find Bottom Left Tree Value
 https://leetcode.com/problems/find-bottom-left-tree-value/
 BFS简单，想一想怎么用DFS！
 3. Find Largest Value in Each Tree Row
-https://leetcode.com/problems/find-largest-value-in-each-tree-row/
-还是BFS VS DFS
+https://leetcode.com/problems/find-largest-value-in-each-tree-row/  
+(PS: just maintain a global list recoding the current largest value)
 
 # Other
+1. Lowest Common Ancestor of Deepest Leaves
+https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/
+寻找两个深度最高的叶节点的，深度最大的公共祖先
 
+1. Flatten Binary Tree to Linked List
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
+把一个二叉树展平成一个链表
+
+3. Delete Nodes And Return Forest
+https://leetcode.com/problems/delete-nodes-and-return-forest/
+删掉一系列的节点后，返回剩下的所有的树（即森林）
