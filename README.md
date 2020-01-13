@@ -1,2 +1,2 @@
 # About
-organize the algorithm problems(mostly from LeetCode) to form a framework to use algorithm to solve probem
+AlgorithmDict is a dictionary of common starteyies and methods in coding problems.
