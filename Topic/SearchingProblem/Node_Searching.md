@@ -1,11 +1,14 @@
-# IMPLEMENTATION: 
-## queue vs list
-most cases, queue is better than list.  
-if need to compare the list in the same layer. just mark the count...
-## visited
+# three-techniques
+1. DFS
+2. BFS
+3. Backtracking
+
+## easy BFS:
+pop parent, add child in queue
+
+## in graph: visited
 in graph, use set or hash to mark
 
-# level-related tree problem
 
 ## EXAMPLES
 1. Symmetric Tree:  

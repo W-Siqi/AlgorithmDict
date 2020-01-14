@@ -38,7 +38,7 @@ https://leetcode.com/problems/symmetric-tree/
 
 # Answer Searching
 the simplest scenario:   
-if we want to find the optimal answer, just  traverse it and update min/max value of something equal.
+if we want to find the optimal answer, just  traverse it and update min/max value or something equal.
 1. Maximum Depth of Binary Tree
 https://leetcode.com/problems/maximum-depth-of-binary-tree/
 
