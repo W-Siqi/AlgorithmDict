@@ -1,5 +1,4 @@
 ```python
-# where to add the result...
 class Solution(object):
     def letterCombinations(self, digits):
         if not digits:
