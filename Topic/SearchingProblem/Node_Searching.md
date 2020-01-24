@@ -9,6 +9,11 @@ pop parent, add child in queue
 ## in graph: visited
 in graph, use set or hash to mark
 
+# traverse repeatable combination
+
+# traverse unrepeatable combination 
+40. Combination Sum II
+be careful about the duplication of the candidates!
 
 ## EXAMPLES
 1. Symmetric Tree:  
