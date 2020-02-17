@@ -119,6 +119,13 @@ list1 = ['Google', 'Runoob', 'Taobao', 'Baidu']
 list1.reverse()
 ```
 
+```py
+# create grid d[m][n]
+dp = [[0 for a in range(n)] for a in range(m)]
+# !DONT USE THIS:
+# it seems it copied by reference, not values 
+dp = m*[[0]*n]
+```
 # math
 ```python
 # div mod
