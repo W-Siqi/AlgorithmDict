@@ -1,4 +1,4 @@
-# solution 1 
+# solution 1  (cache pre&suf)
 runtime O(n) , space O(n)
 ```py
 class Solution:
