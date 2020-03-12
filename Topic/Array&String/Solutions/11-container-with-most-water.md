@@ -1,5 +1,3 @@
-
-
 two-pointers version:
 ```python
 class Solution:
