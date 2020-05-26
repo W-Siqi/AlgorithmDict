@@ -2,6 +2,8 @@
 这题主要是创造二分的动机，  
 因为频繁查询， 但这里是index的位置都有关系的，不能随意排序。   
 但是我们可以从后往前数，数过的就可以直接排序。
+# 【填坑】
+binary index tree
 # solution 1
 ```py
 class Solution:

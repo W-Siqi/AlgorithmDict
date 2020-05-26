@@ -10,6 +10,7 @@ li = [1,2,"can_be_str"]
 li1 = [1,2,3,4,5,7]
 li2 = [x for x in li2 if x > 3]
 li2 = [x + 1 for x in li2 if x > 3]
+AB = [a+b for a in A for b in B]
 # or another way...
 [f(x) if condition else g(x) for x in sequence]
 ```
