@@ -1,3 +1,6 @@
+# motivation
+和leetcode 166有点像，检测冲突，重复
+
 # edge case: 'aa' 对 'ab' ，所以在存映射的时候，a->b， 意味着：之后所有的映射，a->x 和 x->b都不行。 
 ```py
 class Solution:
