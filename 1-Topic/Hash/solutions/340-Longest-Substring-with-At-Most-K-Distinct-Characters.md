@@ -1,3 +1,6 @@
+# slding window + hash
+这是hash还是扮演一个类似于counter的角色。  
+**其实，只要是找对出现次数,冲突 有要求的子集/substring，基本都是要用到**
 ```py
 class Solution(object):
     def lengthOfLongestSubstringKDistinct(self, s, k):
