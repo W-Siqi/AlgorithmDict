@@ -1,5 +1,7 @@
 # takeaway
-hash 用来方便统计
+这题其实更像slding-window，hash/set用来方便统计追踪的。  
+# motivation
+总的来说，这里的hash还是扮演一个计数板的角色，用来跟踪查重
 ```py
 class Solution(object):
     def minWindow(self, s, t):
