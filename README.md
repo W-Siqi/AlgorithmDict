@@ -1,6 +1,6 @@
 [bs-note]:./1-Topic/BinarySearch/note.md
 [hash-note]:./1-Topic/Hash/note-hash.md
-[tree-note]:1-Topic\TreeProblems\Note_TreeProblem.md
+[tree-note]:./1-Topic./TreeProblems./Note_TreeProblem.md
 # 已归档专题
 ### [Binary Search][bs-note]
 ### [Hash][hash-note]
