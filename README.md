@@ -1,26 +1,24 @@
-[sliding-window-page]:https://github.com/W-Siqi/AlgorithmDict/blob/master/Topic/SlidingWindow/Note_SlidingWindow.md
+[bs-note]:./1-Topic/BinarySearch/note.md
+[hash-note]:./1-Topic/Hash/note-hash.md
+[tree-note]:1-Topic\TreeProblems\Note_TreeProblem.md
+# 已归档专题
+### [Binary Search][bs-note]
+### [Hash][hash-note]
+### [Tree][tree-note]
+
+# pending专题
+### [Searching Problems(DFS/BFS/Backtracking)]()
+### [Dynamic Programming]()
+### [Sliding Window]()
+### [Design]()
+### [Graph]()
+### [list/array/string]()
 
 
-# About
-AlgorithmDict is a dictionary of common starteyies and methods in coding problems.
 
-# Familiar with data struct
-### [Tree]()(pending)
-### [Graph]()(pending)
-### [list/array/string]()(pending)
-### [dictionary]()(pending)
-
-# Topics
-### [Classic Problems]()(pending)
-### [Searching Problems(DFS/BFS/Backtracking)]()(doing)
-### [Dynamic Programming]()(pending)
-### [Sliding Window][sliding-window-page](done)
-### [Hash]()(pending)
-### [Binary Search]()(pending)
-### [Alpha-beta]()(pending)
-
-
-# Other
+# Leetcode 周赛解析
 ### [Quick AC & Debugging]()(pending)
-### [Python quick check]()(doing)
-### [C++ quick check]()(pending)
+
+# 附录
+### [Python quick check]()
+### [C++ quick check]()
