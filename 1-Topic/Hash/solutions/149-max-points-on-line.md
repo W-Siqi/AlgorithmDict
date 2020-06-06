@@ -1,3 +1,6 @@
+# motivation
+还是用来O(n)快速分组
+
 这题，主要一个明白，判直线的方法。  
 另外，注意这题的edge case。 以及高精度的解决方案-直接用string-decimal来编码数字
 

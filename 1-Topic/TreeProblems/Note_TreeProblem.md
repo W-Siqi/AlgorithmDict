@@ -34,7 +34,7 @@ Fact：BST的中序遍历序列，就是排序了的数组
 - [110-balanced-binary-tree](./110-balanced-binary-tree.md)
 
 # 不同写法之间的抉择
-## 递归VS非递归
+## 递归VS非递归VS Morris
 ## DFS VS BFS
 带depth的DFS取代BFS
 - [102-binary-tree-level-order-traversal](./102-binary-tree-level-order-traversal.md)
@@ -43,4 +43,4 @@ Fact：BST的中序遍历序列，就是排序了的数组
 # other problems
 - [101-symmeric-tree](./101-symmeric-tree.md)
 - [572-subtree-of-another-tree](./572-subtree-of-another-tree.md)
-- [1104. Path In Zigzag Labelled Binary Tree](https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/)
+- [1104. Path In Zigzag Labelled Binary Tree](https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/)(满二叉的编号规律)

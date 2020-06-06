@@ -1,3 +1,8 @@
+# Greedy
+这题贪心法的直觉性很强。  
+也就是痕迹很明显，找最优方案。  
+但是greedy最大难处，是证明...  
+就像这题，我做出来了，但是不知道这个是不是最优解
 ```py
 class Solution(object):
     def twoCitySchedCost(self, costs):

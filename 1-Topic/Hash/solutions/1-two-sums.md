@@ -1,3 +1,6 @@
+# motivation
+hash最常见的动机：如果要在一堆元素里面频繁查找（通常遍历查询N次），那么就构建hash
+
 if build the hash first:
 dont forget to check use the one number twice
 ```python

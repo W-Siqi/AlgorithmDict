@@ -25,7 +25,7 @@ def takeSecond(elem):
 random.sort(key=takeSecond)
 # or just use lambda
 si.sort(key=lambda x:x[0])
-
+                                                                                                                  
 # rank from i+1 to last
 nums[i+1:len(nums)] = sorted(nums[i+1:len(nums)])
 ```

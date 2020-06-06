@@ -1,4 +1,7 @@
-# PS: python 的ASCII和char的互转 asc = ord(char) c = chr(asc)
+# motivation
+统计归类。不过这题需要注意的一点，就是hash值的选择。
+
+### （PS: python 的ASCII和char的互转 asc = ord(char) c = chr(asc)）
 
 # solution1: 用 sort hash 
 ```py
