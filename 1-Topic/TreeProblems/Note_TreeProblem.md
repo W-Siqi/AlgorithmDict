@@ -12,9 +12,20 @@ Fact：BST的中序遍历序列，就是排序了的数组
 
 - [538-convert-BST-to-greater-tree](./538-convert-BST-to-greater-tree.md
 )
-# traversal with target
-## bottom-up/top-down
- 
+# traversal: bottom-up/top-down
+很多问题，其实就是遍历一下，计算或check某种值。  
+这种题，做出来不难，但是写法上要做到思路清晰，而且能one pass遍历的，就不要写多pass记录了。  
+
+## 一次DFS的pass包括了top-down + bottom up
+- top-down 是递归调用时，信息从top通过实参一层层往下传
+- bottom-up 是递归返回时，信息从bottom通过返回值一层层往上传
+  
+需要知道subtree 的信息进而做计算的，就是bottom-up一层层算上去：  
+[543. Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/), [563. Binary Tree Tilt](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/)
+
+有时候，one-pass不够：  
+[863-all-nodes-distance-k-in-binaray-tree](./863-all-nodes-distance-k-in-binaray-tree.md)
+
 #  recursive defination
 三段论：左子树，右子树，然后合起来的大树
 - [98-valid-binary-search-tree](./98-valid-binary-search-tree.md)
@@ -32,3 +43,4 @@ Fact：BST的中序遍历序列，就是排序了的数组
 # other problems
 - [101-symmeric-tree](./101-symmeric-tree.md)
 - [572-subtree-of-another-tree](./572-subtree-of-another-tree.md)
+- [1104. Path In Zigzag Labelled Binary Tree](https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/)
