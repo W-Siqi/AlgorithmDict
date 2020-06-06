@@ -8,7 +8,7 @@ hash table的广义上的目的都是查找
 - 336- palindrome pairs(找前缀)
 - 710- random pick with blacklist（design题，你要达到快速查找，hash就是一个很好的选择）
 - 739- daily temperature(**好题**)（反向遍历构建查找池的一个例子）（这题比hash更加优化的是“过滤筛选”查找法）
-- 1004- logest dupliacte substring(和739一样，动态查找池)（难在没意识到，找定长的相同subtring可以做到O(N)）
+- 1044- logest dupliacte substring(和739一样，动态查找池)（难在没意识到，找定长的相同subtring可以做到O(N)）
 - 895- maxium frequency stack（**好题**） (design题)（这题交给我的一个道理就是，快速提取hash未必是最优解）（这题最优解释是“分层”的stack的一个巧妙数据结构）
 ## motivation 2 - 冲突，重复检测，计分板
 - 166- fraction-to-recurring-decimal 
