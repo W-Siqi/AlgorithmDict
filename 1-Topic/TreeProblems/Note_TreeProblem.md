@@ -26,12 +26,16 @@ Fact：BST的中序遍历序列，就是排序了的数组
 有时候，one-pass不够：  
 [863-all-nodes-distance-k-in-binaray-tree](./863-all-nodes-distance-k-in-binaray-tree.md)
 
-#  recursive defination
+#  recursive 
 三段论：左子树，右子树，然后合起来的大树
+## recursive defination
 - [98-valid-binary-search-tree](./98-valid-binary-search-tree.md)
 - [100-same-tree](./100-same-tree.md)
 - [508-most-frequent-subtree-sum](./508-most-frequent-subtree-sum)
 - [110-balanced-binary-tree](./110-balanced-binary-tree.md)
+## recursive operation
+有时候要对树进行结构性的操作，也可以尝试用递归的去描述她。
+- [114-flatten-binary-tree-to-linked-list](./114-flatten-binary-tree-to-linked-list.md)
 
 # 不同写法之间的抉择
 ## 递归VS非递归VS Morris
@@ -44,3 +48,4 @@ Fact：BST的中序遍历序列，就是排序了的数组
 - [101-symmeric-tree](./101-symmeric-tree.md)
 - [572-subtree-of-another-tree](./572-subtree-of-another-tree.md)
 - [1104. Path In Zigzag Labelled Binary Tree](https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/)(满二叉的编号规律)
+- [117-populating-next-right-pointers-in-each-node-II](./117-populating-next-right-pointers-in-each-node-II)
