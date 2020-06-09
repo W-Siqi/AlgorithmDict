@@ -29,3 +29,9 @@ si.sort(key=lambda x:x[0])
 # rank from i+1 to last
 nums[i+1:len(nums)] = sorted(nums[i+1:len(nums)])
 ```
+
+# sort with multiple keys
+返回tuple就行了，前面的优先级最大
+```py
+arr.sort(key = lambda x:(x[0],x[1]))   
+```
