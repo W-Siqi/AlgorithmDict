@@ -1,15 +1,16 @@
 [bs-note]:./1-Topic/BinarySearch/note.md
 [hash-note]:./1-Topic/Hash/note-hash.md
 [tree-note]:./1-Topic/TreeProblems/Note_TreeProblem.md
+[slidingwindow-note]:./1-Topic/SlidingWindow/note.md
 # 已归档专题
 ### [Binary Search][bs-note]
 ### [Hash][hash-note]
 ### [Tree][tree-note]
+### [Sliding Window][slidingwindow-note]
 
 # pending专题
 ### [Searching Problems(DFS/BFS/Backtracking)]()
 ### [Dynamic Programming]()
-### [Sliding Window]()
 ### [Design]()
 ### [Graph]()
 ### [list/array/string]()
