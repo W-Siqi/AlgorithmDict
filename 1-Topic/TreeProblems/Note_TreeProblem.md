@@ -18,7 +18,7 @@
 ## recursive defination
 - [98-valid-binary-search-tree](./98-valid-binary-search-tree.md)
 - [100-same-tree](./100-same-tree.md)
-- [508-most-frequent-subtree-sum](./508-most-frequent-subtree-sum)
+- [508-most-frequent-subtree-sum](./508-most-frequent-subtree-sum.md)
 - [110-balanced-binary-tree](./110-balanced-binary-tree.md)
 ## recursive operation
 有时候要对树进行结构性的操作，也可以尝试用递归的去描述她。
