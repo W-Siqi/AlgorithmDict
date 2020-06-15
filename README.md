@@ -2,6 +2,7 @@
 [hash-note]:./1-Topic/Hash/note-hash.md
 [tree-note]:./1-Topic/TreeProblems/Note_TreeProblem.md
 [slidingwindow-note]:./1-Topic/SlidingWindow/note.md
+[contest]:./4-leetcode-contest/0-history-log-overview.md
 # 已归档专题
 ### [Binary Search][bs-note]
 ### [Hash][hash-note]
@@ -18,7 +19,7 @@
 
 
 # Leetcode 周赛解析
-### [Quick AC & Debugging]()(pending)
+[History log][contest]
 
 # 附录
 ### [Python quick check]()
