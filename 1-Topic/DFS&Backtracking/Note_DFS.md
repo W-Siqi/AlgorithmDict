@@ -1,94 +1,36 @@
-# The dataflow in DFS: top-down and bottom-up
-keep the concept in mind. help to code with clear mind.   
-## top-down: 
-give the chance to pass the history of accumulative value to child.   
-## bottom-up: 
-give the chance to gather infomation from child and then make judgement based on it
+# 策略搜索与DP
+策略的搜索，很多时候都要用到memorization，也就是DP。  
+其动机有：  
+1. 策略搜索都是指数的复杂度，短短一二十个step就会让你超时
+2. 策略搜索都会基于当前的“上下文”做出下一步，而“上下文”很多时候就是一个重叠的子问题
+  
+Remove Boxes
+https://leetcode.com/problems/remove-boxes/    
+Brust Balloons 
+https://leetcode.com/problems/burst-balloons/
 
-# Strategy Searching
-DFS is a very common case to search the strategy.
-1. Remove Boxes
-https://leetcode.com/problems/remove-boxes/
-hard！
-2. Shopping Offers
-https://leetcode.com/problems/shopping-offers/
-3. Strange Printer
+Shopping Offers
+https://leetcode.com/problems/shopping-offers/  
+
+
+Strange Printer
 https://leetcode.com/problems/strange-printer/
-类型同上？
 
-# The recursive defination
-The data structure 'tree' itself is defined recursively.   
-So the formula to check a tree is:  
-a. check left child  
-b. check right child  
-c. check root
-1. Validate Binary Search Tree
-https://leetcode.com/problems/validate-binary-search-tree/
+# grid网格寻径
+## BFS VS DFS
+grid里面的遍历实质上，就是对图的遍历，比树的遍历要多一个避免回路的步骤  
+- DFS: 记录走过的路径，要么传递path，优化传递的话可以用backtracking
+- BFS: 记录已扩张过的点  
 
-2. Same Tree
-https://leetcode.com/problems/same-tree/
-
-3. Balanced Binary Tree
-https://leetcode.com/problems/balanced-binary-tree/
-判断一个树是不是balance的，也就所有子树，childen左右的高度差不超过1
-
-4. Symmetric Tree  
-https://leetcode.com/problems/symmetric-tree/
-判断一个树是不是中心对称的
-
-# Answer Searching
-the simplest scenario:   
-if we want to find the optimal answer, just  traverse it and update min/max value or something equal.
-1. Maximum Depth of Binary Tree
-https://leetcode.com/problems/maximum-depth-of-binary-tree/
-
-
-2. Minimum Depth of Binary Tree
-https://leetcode.com/problems/minimum-depth-of-binary-tree/
-
-
-# Path of the tree
-path the history in the **top-down** dataflow. When reach the leave node. There is the path.  
-
-In most cases, we can use **Backtraing** to skip the tedious memory assign, which is performance friendly. 
-1. Path Sum
-  https://leetcode.com/problems/path-sum/  
-If there is a path that the sum of data is equal to the given value.
-2. Path Sum II
-https://leetcode.com/problems/path-sum-ii/
-Find and print all paths that the sum of data is equal to the given value.
-3. Insufficient Nodes in Root to Leaf Paths
-https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/  
-delete all node: that all path through this node is the path with sum less than a given value.    
-(PS: This can use bottom-up method to make an decision accroding to children's situations)
-4. Sum Root to Leaf Numbers
-https://leetcode.com/problems/sum-root-to-leaf-numbers/  
-every node stands for 1-9. So each path stands for a number. Sum all numbers form in this method.  
-(PS: this can be both top-down and bottom-up. In the bottom-up, sum += depth * value * numberOfChildren)
-
-
-# BFS VS DFS
-When it comes to 'each row' related probelm. It is very easy to use BFS.   
-But with DFS with more attention about depth, we can solve it with less and more clean code.
-1. Binary Tree Right Side View
-https://leetcode.com/problems/binary-tree-right-side-view/  
-just alway try to traverse the right child.
-2. Find Bottom Left Tree Value
-https://leetcode.com/problems/find-bottom-left-tree-value/
-BFS简单，想一想怎么用DFS！
-3. Find Largest Value in Each Tree Row
-https://leetcode.com/problems/find-largest-value-in-each-tree-row/  
-(PS: just maintain a global list recoding the current largest value)
-
-# Other
-1. Lowest Common Ancestor of Deepest Leaves
-https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/
-寻找两个深度最高的叶节点的，深度最大的公共祖先
-
-1. Flatten Binary Tree to Linked List
-https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
-把一个二叉树展平成一个链表
-
-3. Delete Nodes And Return Forest
-https://leetcode.com/problems/delete-nodes-and-return-forest/
-删掉一系列的节点后，返回剩下的所有的树（即森林）
+但其实下面的几个题目，都是BFS比DFS更好,主要原因是：  
+1. BFS 更直观，更容易想象
+2. BFS 可以知道全局信息，比如要计算全grid的可抵达性或路径，都是BFS更直接方便. 
+## 常见寻径情形
+### a)点到点 
+- [1391-check-valid-path](./1391-check-valid-path.md)
+### b)点到区域 
+- [417-pacific-atlantic-water-flow](./417-pacific-atlantic-water-flow.md)
+- [542-01matrix](./542-01matrix.md)
+### c)区域到区域
+- [934-shortest-bridge](./934-shortest-bridge.md)
+## 带权值/能耗函数 怎么办？

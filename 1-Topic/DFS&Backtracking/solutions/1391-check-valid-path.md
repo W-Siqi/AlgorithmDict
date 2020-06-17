@@ -1,18 +1,4 @@
-# Key words
-**graph的寻径**, **DFS** 
-
-和标准的 grid map 寻径不一样的是， next step 的判定函数有点恶心
-
-# 使用映射 来避免 一万个if
-这题唯一的难点，就是优雅的用map和musk的技巧，避免写一万个if  
-多层if，一个容易出错，二个时间很长，很浪费写题时间， 最重要的是显得你很蠢！  
-
-# graph 的 visited, 隐藏的O()
-这题，按道理是O(mn). 活生生得被我写成O(mn*mn)  
-因为visited我是用的list，这样for (x,y) in visited 就是O(m,n)了.  
-**LESSION:**  
-**graph的visited，频繁查找的，一定要用hashmap来存储，不然节点一多直接爆炸，而且这题我还没意识到**
-# solution
+# solution 1 (DFS)
 ```py
 class Solution:
     def hasValidPath(self,grid):
@@ -59,4 +45,29 @@ class Solution:
         m,n = len(grid),len(grid[0])
         visited = set()
         return DFS(grid,0,0,visited) 
+```
+
+# solution 2 BFS
+```py
+class Solution(object):
+    def hasValidPath(self, grid):
+        outs = {(1,-8),(1,8),(2,-6),(2,6),(3,8),(3,6),(4,-8),(4,6),(5,-6),(5,8),(6,-6),(6,-8)}
+        m,n = len(grid),len(grid[0])
+        seen = {(0,0)}
+        queue = [(0,0)]
+        dirs = [(-1,0,-6),(1,0,6),(0,-1,8),(0,1,-8)]
+
+        while queue:
+            font = queue.pop(0)
+            for d in dirs:
+                nei = (d[0]+font[0],d[1]+font[1])
+                within = nei[0] >= 0 and nei[0] < m and nei[1] >= 0 and nei[1] < n
+                # chack if within and if seen before
+                if within and nei not in seen:
+                    # check if can reach
+                    fonttype,neitype = grid[font[0]][font[1]],grid[nei[0]][nei[1]]
+                    if (fonttype,d[2]) in outs and (neitype,-d[2]) in outs:
+                        seen.add(nei)
+                        queue.append(nei)
+        return (m-1,n-1) in seen
 ```
