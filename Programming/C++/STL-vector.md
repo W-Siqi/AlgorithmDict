@@ -68,13 +68,14 @@ a.reserve(100);
 .empty() /.size（）/.begin()/.end() 这4个好像所有容器都可以？似乎是基于iterator的？
 
 # algorithm
-排序（默认升序）
+## 排序（默认升序）
+```c
 vector<int> GetRanked(vector<int>& src){
         vector<int> dest(src);
         sort(dest.begin(),dest.end());
         return dest;
     }
-
+```
 （1）sort(a.begin(),a.end()); //对a中的从a.begin()（包括它）到a.end()（不包括它）的元素进行从小到大排列
 （2）reverse(a.begin(),a.end()); //对a中的从a.begin()（包括它）到a.end()（不包括它）的元素倒置，但不排列，如a中元素为1,3,2,4,倒置后为4,2,3,1
 （3）copy(a.begin(),a.end(),b.begin()+1); //把a中的从a.begin()（包括它）到a.end()（不包括它）的元素复制到b中，从b.begin()+1的位置（包括它）开        始复制，覆盖掉原有元素

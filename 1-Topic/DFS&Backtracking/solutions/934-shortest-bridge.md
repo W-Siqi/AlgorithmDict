@@ -1,5 +1,5 @@
 # 区域对区域的寻径
-就是从1个区域的边缘开始扩张
+就是从其中一个区域的边缘开始扩张
 # solution 1 从边缘开始BFS
 ```py
 class Solution(object):

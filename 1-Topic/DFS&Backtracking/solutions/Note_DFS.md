@@ -1,10 +1,27 @@
 # 策略搜索
-## 策略搜索与DP
+## a)策略的DP动机
 策略的搜索，很多时候都要用到memorization，也就是DP。  
 其动机有：  
 1. 策略搜索都是指数的复杂度，短短一二十个step就会让你超时
 2. 策略搜索都会基于当前的“上下文”做出下一步，而“上下文”很多时候就是一个重叠的子问题
-  
+
+## b)如何判断策略搜素的时候是否DP？
+**99%的策略决策都会重复出现子问题，但并不代表可以DP**
+
+很大的一个分界线就是，下一步之后的策略，是否是“self-contained”的, 也就是是否以来前面的决策的上下文。   
+经典例子就是数独和八皇后问题，做决策需要之前面的信息；   而字符串匹配，分割，不需要之前面是怎么分的， 我只要知道前面是分割成功这个结果就行了。  
+
+### 子问题是self-contain的：
+10和140都是字符串匹配问题，不要以为，按照step的，策略决策就不会出现重叠的子问题  
+- [10-regular-expression-matching](./10-regular-expression-matching.md)  
+- [140-word-break-II](./140-word-break-II.md)  
+
+### 子问题不是self-contain的，要基于前面的决策：
+- [37-sudoku-solver](./37-sudoku-solver.md)      
+- [51-N-Queens](./51-N-Queens.md)   
+无阶段的策略种决策种避免重复  
+
+## c)其他例子
 Remove Boxes
 https://leetcode.com/problems/remove-boxes/    
 Brust Balloons 
@@ -15,9 +32,6 @@ https://leetcode.com/problems/shopping-offers/
 
 Strange Printer
 https://leetcode.com/problems/strange-printer/
-
-## 老老实实的暴力搜索
-
 
 # grid网格寻径
 ## BFS VS DFS
