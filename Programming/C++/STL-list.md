@@ -1,10 +1,10 @@
-#List
-创建
+# List 创建
+```c++
 list<int>a{1,2,3}
 list<int>a(n)    //声明一个n个元素的列表，每个元素都是0
 list<int>a(n, m)  //声明一个n个元素的列表，每个元素都是m
 list<int>a(first, last)  //声明一个列表，其元素的初始值来源于由区间所指定的序列中的元素，first和last是迭代器
-
+```
 # 插入
 ```c++
 a.push_front()//头部插入

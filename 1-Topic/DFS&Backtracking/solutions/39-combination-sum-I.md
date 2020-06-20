@@ -1,4 +1,4 @@
-# 排列组合 - combination
+# 排列组合 - subset
 按照step进行dfs搜索就行了，每个step决定这个number是选0,1,2，3...个。   
 # solution 1 DFS
 ## 一个wrong answer
