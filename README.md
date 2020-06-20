@@ -3,14 +3,15 @@
 [tree-note]:./1-Topic/TreeProblems/Note_TreeProblem.md
 [slidingwindow-note]:./1-Topic/SlidingWindow/note.md
 [contest]:./4-leetcode-contest/0-history-log-overview.md
+[search]:./1-Topic/Search/Note_search.md
 # 已归档专题
 ### [Binary Search][bs-note]
 ### [Hash][hash-note]
 ### [Tree][tree-note]
 ### [Sliding Window][slidingwindow-note]
-
+### [Search(DFS/BFS/Backtracking)][search]
 # pending专题
-### [Searching Problems(DFS/BFS/Backtracking)]()
+
 ### [Dynamic Programming]()
 ### [Design]()
 ### [Graph]()
