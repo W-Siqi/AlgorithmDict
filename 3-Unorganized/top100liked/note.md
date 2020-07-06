@@ -110,9 +110,25 @@ BUT: merge sort是不需要随机访问的！
 
 
 # Tree的教科书练习题
-- 94. Binary Tree Inorder Traversal(非递归遍历)
-- 105. Construct Binary Tree from Preorder and Inorder Traversal
-
+## 非递归遍历系列
+### 94. Binary Tree Inorder Traversal
+最简单，访问自己，push
+### 144. Binary Tree Preorder Traversal
+cur+stack 模式： cur**要么从parent滑过来，要么从stack取**   
+一个节点会过2次cur指针：
+- 第一次： cur 转到左边
+- 第二次： 访问自己，cur 转到右边
+### 144. Binary Tree Postorder Traversal
+（这个最麻烦是因为： 我们需要额外的一个stack来追踪这个节点是第几次光顾了，preorder是因为第二次是从stack.pop出来，第一次是因为指针递归）   
+还是cur+stack模式： 但是1个节点会过3次cur指针：
+- 第一次： cur 转到左边
+- 第二次： cur 转到右边
+- 第三次： 访问自己，cur放置空(或者立马从stack取)
+## 二叉树构建
+### 105. Construct Binary Tree from Preorder and Inorder Traversal
+构建需要满足的要求：  
+1. 必须有中序，然后加一个后序/前序。因为要找root进行递归
+2. 不能重复元素，否则就不是唯一解。（比如[1,1,1,1,1]和[1,1,1,1,1]两个就有多种构建方法）
 # Design
 ## 146. LRU Cache
 有实际场景的一道题。  
