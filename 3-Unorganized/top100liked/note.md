@@ -145,6 +145,17 @@ hash存指针，用来快速定位链表。
 ## 295. Find Median from Data Stream
 - 经典的双heap解法，其实持续插入＋维护排序，基本也就heap了
 
+# 感受贪心
+## 406. Queue Reconstruction by Height 看出贪心
+这题核心问题，就是在队列里面，互相有约束。   
+**约束问题，是贪心法比较常用的情形**:
+1. 每一步必须满足当前约束 （前面必须有k个不比他矮的）
+2. 每一步尽量放宽后面的约束 (尽量往后移动，使得高的尽量靠后，这样后面插入的大致都是递增。而且尽量不打乱后面的约束条件)   
+至于这题怎么证明想通贪心，一个观察就是“矮的随便怎么放，都不影响比它高的结果. 但是高若在矮的前面，会影响比它矮的结果” -> 高的尽量靠后
+
+## 621. Task Scheduler（已单独记录）
+很明显的贪心，为了充分利用，当前可数最高的优先
+
 # to-do
 - 84. Largest Rectangle in Histogram
 - 32. Longest Valid Parentheses
@@ -158,11 +169,6 @@ hash存指针，用来快速定位链表。
 - 338. Counting Bits  这题的DP真的骚...
 
 
-
-
-感受贪心
-- 406. Queue Reconstruction by Height 看出贪心
-- 621. Task Scheduler
 
 array的DP
 - 581. Shortest Unsorted Continuous Subarray 累加max/min的那个技巧
